@@ -65,14 +65,13 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	}));
 	```
 
-8. Add a middleware for routes that need protection:
+8. Add a `requiresAuth` middleware for routes that need protection:
 
 	```js
 	// app.js
 	
-	// Just add requiresAuth() to expenses route in the starter project 👇
-	app.get('/protected', requiresAuth(), (req, res) => {
-		res.render('protected');
+	app.get('/expenses', requiresAuth(), (req, res) => {
+	  // ...
 	});
 	```
 
