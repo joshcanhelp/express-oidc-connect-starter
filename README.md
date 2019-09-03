@@ -92,13 +92,16 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 	```js
 	// views/home.ejs
-	
-	// Modify what's in the starter project with what is below 👇
-	<% if (user) { %>
-		<p>Hello <%= user.name %>!</p>
-	<% } else { %>
-		<a href="/login">Login</a>
-	<% } %>
+		// ...
+		
+		<% if (user) { %>
+			<p>Hello <%= user.name %>!</p>
+		<% } else { %>
+			<a href="/login">Login</a>
+		<% } %>
+		
+	</body>
+	</html>
 ```
 
 ## Logout
