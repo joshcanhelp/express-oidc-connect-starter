@@ -4,7 +4,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 ## Adding Authentication
 
-1. [Download the starter seed project](https://github.com/auth0/identity-102-exercises/tree/master/lab-01/begin).
+1. [Download the starter seed project](https://github.com/joshcanhelp/express-oidc-connect-starter).
 
 2. Create a new web app with callback (`/callback` route) and logout (app home route).
 
