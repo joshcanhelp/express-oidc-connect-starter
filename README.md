@@ -75,6 +75,8 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	});
 	```
 
+**👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/01-adding-authentication)**
+
 ## Display User Information
 
 1. Add user information to rendered views:
@@ -104,6 +106,8 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	</html>
 ```
 
+**👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/01-adding-authentication...02-display-user-information)**
+
 ## Logout
 
 1. Add a logout link to the view:
@@ -132,4 +136,6 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```
 
 4. Restart the server, refresh the page, click logout, then login. Login UI should display now.
+
+**👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/02-display-user-information...03-logout)**
 
