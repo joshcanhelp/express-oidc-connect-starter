@@ -109,7 +109,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 		
 	</body>
 	</html>
-```
+	```
 
 **👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/01-adding-authentication...02-display-user-information)**
 
