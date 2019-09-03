@@ -4,9 +4,13 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 ## Adding Authentication
 
-1. [Download the starter seed project](https://github.com/joshcanhelp/express-oidc-connect-starter).
+1. Clone this repo:
 
-2. Create a new web app with callback (`/callback` route) and logout (app home route).
+	```bash
+	$ git clone git@github.com:joshcanhelp/express-oidc-connect-starter.git
+	```
+
+2. Create a [new web app in Auth0](https://manage.auth0.com/#/applications) with an allowed callback URL (`/callback` route) and allowed logout URL (app home route).
 
 3. Install nodemon globally:
 
@@ -28,13 +32,13 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	PORT=3000
 	```
 
-5. Install the packages:
+5. Install the new packages:
 
 	```bash
 	$ npm install express-openid-connect cookie-session body-parser
 	```
 
-6. Require the packages:
+6. Require the packages in the app:
 
 	```js
 	// app.js
@@ -45,12 +49,12 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	const { auth, requiresAuth } = require('express-openid-connect');
 	```
 
-7. Add the following as the last `app.use` statement ([cookie-session options](https://github.com/expressjs/cookie-session#cookiesessionoptions) and [auth options](https://github.com/auth0/express-openid-connect/blob/master/API.md#openidclientauth-parameters)):
+7. Add the following as the last `app.use` statement (for reference: [cookie-session options](https://github.com/expressjs/cookie-session#cookiesessionoptions) and [auth options](https://github.com/auth0/express-openid-connect/blob/master/API.md#openidclientauth-parameters)):
 
 	```js
 	// app.js
+	// ... after any other app.use statements
 	
-	// Required for the SDK but already included in the starter project 👇
 	app.use(bodyParser.urlencoded({ 
 	  extended: false 
 	}));
@@ -83,10 +87,11 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 	```js
 	// app.js
+	// ...
 	
-	// Already exists in the starter project 👇
 	app.get('/', (req, res) => {
-		res.render('home',  { user: req.openid && req.openid.user });
+		// Add the second parameter👇
+		res.render('home', { user: req.openid && req.openid.user });
 	});
 	```
 
@@ -115,9 +120,10 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```js
 	// views/home.ejs
 	
-	// Modify the code above👇
 	<% if (user) { %>
+		// Add the line below👇
 		<a href="/logout">Logout</a>
+		
 		<p>Hello <%= user.name %>!</p>
 		// ...
 	```
