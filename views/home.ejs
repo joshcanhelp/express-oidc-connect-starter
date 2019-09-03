@@ -8,6 +8,7 @@
   <h1>Hello World</h1>
   <a href="/expenses">Expenses</a>
   <% if (user) { %>
+    <a href="/logout">Logout</a>
     <p>Hello <%= user.name %>!</p>
   <% } else { %>
     <a href="/login">Login</a>

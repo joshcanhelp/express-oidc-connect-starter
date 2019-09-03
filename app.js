@@ -23,7 +23,8 @@ app.use(session({
 }));
 
 app.use(auth({
-  required: false
+  required: false,
+  auth0Logout: true
 }));
 
 app.get('/', (req, res) => {
