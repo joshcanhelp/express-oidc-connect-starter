@@ -7,5 +7,10 @@
 <body>
   <h1>Hello World</h1>
   <a href="/expenses">Expenses</a>
+  <% if (user) { %>
+    <p>Hello <%= user.name %>!</p>
+  <% } else { %>
+    <a href="/login">Login</a>
+  <% } %>
 </body>
 </html>

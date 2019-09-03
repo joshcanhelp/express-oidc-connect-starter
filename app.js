@@ -27,7 +27,7 @@ app.use(auth({
 }));
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', { user: req.openid && req.openid.user });
 });
 
 app.get('/expenses', requiresAuth(), (req, res) => {
