@@ -12,9 +12,10 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 2. Create a [new web app in Auth0](https://manage.auth0.com/#/applications) with an allowed callback URL (`/callback` route) and allowed logout URL (app home route).
 
-3. Install nodemon globally:
+3. Install existing packages and nodemon globally:
 
 	```bash
+	$ npm install
 	$ npm install -g nodemon
 	```
 
