@@ -4,7 +4,6 @@ const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
 
-const bodyParser = require('body-parser');
 const session = require('cookie-session');
 const { auth, requiresAuth } = require('express-openid-connect');
 
@@ -14,8 +13,8 @@ app.set('view engine', 'ejs');
 
 app.use(morgan('combined'));
 
-app.use(bodyParser.urlencoded({ 
-  extended: false 
+app.use(express.urlencoded({
+  extended: false
 }));
 
 app.use(session({
