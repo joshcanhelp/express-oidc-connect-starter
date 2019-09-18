@@ -36,7 +36,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 5. Install the new packages:
 
 	```bash
-	$ npm install express-openid-connect cookie-session body-parser
+	$ npm install express-openid-connect cookie-session
 	```
 
 6. Require the packages in the app:
@@ -44,8 +44,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```js
 	// app.js
 	// ... after env configuration
-	
-	const bodyParser = require('body-parser');
+
 	const session = require('cookie-session');
 	const { auth, requiresAuth } = require('express-openid-connect');
 	```
@@ -55,16 +54,16 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```js
 	// app.js
 	// ... after any other app.use statements
-	
-	app.use(bodyParser.urlencoded({ 
-	  extended: false 
+
+	app.use(express.urlencoded({
+	  extended: false
 	}));
-	
+
 	app.use(session({
 	  name: process.env.SESSION_NAME,
 	  secret: process.env.COOKIE_SECRET
 	}));
-	
+
 	app.use(auth({
 	  required: false
 	}));
@@ -74,7 +73,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 	```js
 	// app.js
-	
+
 	app.get('/expenses', requiresAuth(), (req, res) => {
 	  // ...
 	});
@@ -89,7 +88,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```js
 	// app.js
 	// ...
-	
+
 	app.get('/', (req, res) => {
 		// Add the second parameter👇
 		res.render('home', { user: req.openid && req.openid.user });
@@ -101,13 +100,13 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 	```js
 	// views/home.ejs
 		// ...
-		
+
 		<% if (user) { %>
 			<p>Hello <%= user.name %>!</p>
 		<% } else { %>
 			<a href="/login">Login</a>
 		<% } %>
-		
+
 	</body>
 	</html>
 	```
@@ -120,22 +119,22 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 	```js
 	// views/home.ejs
-	
+
 	<% if (user) { %>
 		// Add the line below👇
 		<a href="/logout">Logout</a>
-		
+
 		<p>Hello <%= user.name %>!</p>
 		// ...
 	```
 
-2. Click logout, then login. SSO happens so no login UI is shown. 
+2. Click logout, then login. SSO happens so no login UI is shown.
 
 3. Modify the auth options to log out of Auth when logging out of the application:
 
 	```js
 	// app.js
-	
+
 	app.use(auth({
 	  required: false,
 	  auth0Logout: true
@@ -145,4 +144,3 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 4. Restart the server, refresh the page, click logout, then login. Login UI should display now.
 
 **👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/02-display-user-information...03-logout)**
-
