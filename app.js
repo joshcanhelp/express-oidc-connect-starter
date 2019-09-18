@@ -24,7 +24,11 @@ app.use(session({
 
 app.use(auth({
   required: false,
-  auth0Logout: true
+  auth0Logout: true,
+  getUser: (tokenSet) => {
+    tokenClaims = tokenSet.claims || {};
+    return Object.assign(tokenClaims, { lastLogin: Date() });
+  }
 }));
 
 app.get('/', (req, res) => {
