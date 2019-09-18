@@ -2,7 +2,7 @@
 
 Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8113.herokuapp.com/docs/identity-labs/01-web-sign-in).
 
-## Adding Authentication
+## 1. Adding Authentication
 
 1. Clone this repo:
 
@@ -81,7 +81,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 **👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/01-adding-authentication)**
 
-## Display User Information
+## 2. Display User Information
 
 1. Add user information to rendered views:
 
@@ -113,7 +113,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 
 **👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/01-adding-authentication...02-display-user-information)**
 
-## Logout
+## 3. Logout
 
 1. Add a logout link to the view:
 
@@ -125,7 +125,7 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 		<a href="/logout">Logout</a>
 
 		<p>Hello <%= user.name %>!</p>
-		// ...
+	// ...
 	```
 
 2. Click logout, then login. SSO happens so no login UI is shown.
@@ -144,3 +144,35 @@ Pared down and modified from [identity lab 01](https://docs-content-staging-pr-8
 4. Restart the server, refresh the page, click logout, then login. Login UI should display now.
 
 **👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/02-display-user-information...03-logout)**
+
+## 4. Customize the user profile
+
+1. Add a property `getUser` to the auth options set to an async function to return a new profile field:
+
+	```js
+	// app.js
+
+	app.use(auth({
+		// ...
+
+		// Add the code below👇
+		getUser: (tokenSet) => {
+			tokenClaims = tokenSet.claims || {};
+			return Object.assign(tokenClaims, { lastLogin: Date() });
+		}
+	// ...
+	```
+
+2. Output the new field on the homepage:
+
+	```js
+	// views/home.ejs
+
+	<% if (user) { %>
+		// ...
+
+		// Add the line below👇
+		<p>Login time: <%= user.lastLogin %></p>
+	// ...
+	```
+**👉 [See this compare for all code changes in this section](https://github.com/joshcanhelp/express-oidc-connect-starter/compare/03-logout...04-get-user-profile)**
